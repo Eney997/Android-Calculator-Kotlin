@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         //WRITE NUMBERS IN EDITTEXT
         binding.apply {
-            val numberButtons = listOf(one, two, three, four, five, six, seven, eight, nine, zero,mul)
+            val numberButtons = listOf(one, two, three, four, five, six, seven, eight, nine, zero)
 
             numberButtons.forEach { button ->
                 button.setOnClickListener {
@@ -43,146 +43,176 @@ class MainActivity : AppCompatActivity() {
         }
 
         //MUL
-        binding.mul.setOnClickListener {
-            val takeFirstNumber = binding.edForCalNumbers.text.toString()
+        binding.mul.setOnClickListener{
 
-            if (takeFirstNumber.isEmpty()) {
-                Snackbar.make(it, "Enter number please!", Snackbar.LENGTH_SHORT).show()
+            //handle empty inputs
+            if(binding.edForCalNumbers.text.toString().isEmpty())
+            {
+                Snackbar.make(binding.root,"Please enter number first!",Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (!makeMul) {
-                Snackbar.make(it, "Operation is already picked!", Snackbar.LENGTH_SHORT).show()
+            //operator already picked and in use
+            if(!makeMul)
+            {
+                Snackbar.make(binding.root,"Operator already picked!",Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Set first number in the text view
-            binding.tvForCalculationShow.text = takeFirstNumber
-
-            // Disable further multiplication clicks
-            makeMul = false
-
-            // Clear input field
+            //if validation cool do this 3 line of code
+            val setEnteredNumberAfterMul = binding.edForCalNumbers.text.toString()
+            binding.tvForCalculationShow.text = setEnteredNumberAfterMul
             binding.edForCalNumbers.setText("")
+
+            //making operator false to forbid use second time after pick
+            makeMul = false
         }
 
         //DIV
-        binding.div.setOnClickListener {
-            val takeFirstNumber = binding.edForCalNumbers.text.toString()
+        binding.div.setOnClickListener{
 
-            if (takeFirstNumber.isEmpty()) {
-                Snackbar.make(it, "Enter number please!", Snackbar.LENGTH_SHORT).show()
+            //handle empty inputs
+            if(binding.edForCalNumbers.text.toString().isEmpty())
+            {
+                Snackbar.make(binding.root,"Please enter number first!",Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (!makeDiv) {
-                Snackbar.make(it, "Operation is already picked!", Snackbar.LENGTH_SHORT).show()
+            //operator already picked and in use
+            if(!makeDiv)
+            {
+                Snackbar.make(binding.root,"Operator already picked!",Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Set first number in the text view
-            binding.tvForCalculationShow.text = takeFirstNumber
-
-            // Disable further multiplication clicks
-            makeDiv = false
-
-            // Clear input field
+            //if validation cool do this 3 line of code
+            val setEnteredNumberAfterMul = binding.edForCalNumbers.text.toString()
+            binding.tvForCalculationShow.text = setEnteredNumberAfterMul
             binding.edForCalNumbers.setText("")
+
+            //making operator false to forbid use second time after pick
+            makeDiv = false
         }
 
         //PLUS
-        binding.plus.setOnClickListener {
-            val takeFirstNumber = binding.edForCalNumbers.text.toString()
+        binding.plus.setOnClickListener{
 
-            if (takeFirstNumber.isEmpty()) {
-                Snackbar.make(it, "Enter number please!", Snackbar.LENGTH_SHORT).show()
+            //handle empty inputs
+            if(binding.edForCalNumbers.text.toString().isEmpty())
+            {
+                Snackbar.make(binding.root,"Please enter number first!",Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (!makePlus) {
-                Snackbar.make(it, "Operation is already picked!", Snackbar.LENGTH_SHORT).show()
+            //operator already picked and in use
+            if(!makePlus)
+            {
+                Snackbar.make(binding.root,"Operator already picked!",Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Set first number in the text view
-            binding.tvForCalculationShow.text = takeFirstNumber
-
-            // Disable further multiplication clicks
-            makePlus = false
-
-            // Clear input field
+            //if validation cool do this 3 line of code
+            val setEnteredNumberAfterMul = binding.edForCalNumbers.text.toString()
+            binding.tvForCalculationShow.text = setEnteredNumberAfterMul
             binding.edForCalNumbers.setText("")
+
+            //making operator false to forbid use second time after pick
+            makePlus = false
         }
+
 
         //MINUS
-        binding.minus.setOnClickListener {
-            val takeFirstNumber = binding.edForCalNumbers.text.toString()
+        binding.minus.setOnClickListener{
 
-            if (takeFirstNumber.isEmpty()) {
-                Snackbar.make(it, "Enter number please!", Snackbar.LENGTH_SHORT).show()
+            //handle empty inputs
+            if(binding.edForCalNumbers.text.toString().isEmpty())
+            {
+                Snackbar.make(binding.root,"Please enter number first!",Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (!makeMinus) {
-                Snackbar.make(it, "Operation is already picked!", Snackbar.LENGTH_SHORT).show()
+            //operator already picked and in use
+            if(!makeMinus)
+            {
+                Snackbar.make(binding.root,"Operator already picked!",Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Set first number in the text view
-            binding.tvForCalculationShow.text = takeFirstNumber
-
-            // Disable further multiplication clicks
-            makeMinus = false
-
-            // Clear input field
+            //if validation cool do this 3 line of code
+            val setEnteredNumberAfterMul = binding.edForCalNumbers.text.toString()
+            binding.tvForCalculationShow.text = setEnteredNumberAfterMul
             binding.edForCalNumbers.setText("")
+
+            //making operator false to forbid use second time after pick
+            makeMinus = false
         }
 
+        //CALCULATE
         binding.goCalculate.setOnClickListener{
 
-            if(binding.edForCalNumbers.text.isEmpty())
+            val numOneText = binding.tvForCalculationShow.text.toString()
+            val numTwoText = binding.edForCalNumbers.text.toString()
+
+            if(numOneText.isEmpty() || numTwoText.isEmpty())
             {
-                Snackbar.make(it,"Enter number please!",Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root,"Please enter number first!",Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val fNum = binding.tvForCalculationShow.text.toString().toInt()
-            val sNum = binding.edForCalNumbers.text.toString().toInt()
+            if(makeMul && makeDiv && makePlus && makeMinus)
+            {
+                Snackbar.make(binding.root,"Please enter number first!!",Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
+            val numOne = numOneText.toInt()
+            val numTwo = numTwoText.toInt()
 
-            if(!makeMul) {
-                val res = fNum*sNum
+            if(!makeMul)
+            {
+                val res = numOne*numTwo
                 binding.tvForCalculationShow.text = "= $res"
                 binding.edForCalNumbers.setText("")
                 makeMul = true
+                makeDiv = true
+                makePlus = true
+                makeMinus = true
             }
-            else if (!makeDiv)
+            else if(!makeDiv)
             {
-                if(fNum == 0 && sNum == 0)
+                if(numTwo == 0)
                 {
-                    Snackbar.make(it,"Result is undefined",Snackbar.LENGTH_SHORT).show()
-                    binding.tvForCalculationShow.text = ""
+                    Snackbar.make(binding.root,"Undefined",Snackbar.LENGTH_SHORT).show()
                     binding.edForCalNumbers.setText("")
+                    binding.tvForCalculationShow.text = ""
                     return@setOnClickListener
                 }
-
-                val res = fNum/sNum
+                val res = numOne/numTwo
                 binding.tvForCalculationShow.text = "= $res"
                 binding.edForCalNumbers.setText("")
                 makeMul = true
+                makeDiv = true
+                makePlus = true
+                makeMinus = true
             }
-            else if (!makePlus)
+            else if(!makePlus)
             {
-                val res = fNum+sNum
+                val res = numOne+numTwo
                 binding.tvForCalculationShow.text = "= $res"
                 binding.edForCalNumbers.setText("")
+                makeMul = true
+                makeDiv = true
                 makePlus = true
+                makeMinus = true
             }
             else if(!makeMinus)
             {
-                val res = fNum-sNum
+                val res = numOne-numTwo
                 binding.tvForCalculationShow.text = "= $res"
                 binding.edForCalNumbers.setText("")
+                makeMul = true
+                makeDiv = true
+                makePlus = true
                 makeMinus = true
             }
         }
