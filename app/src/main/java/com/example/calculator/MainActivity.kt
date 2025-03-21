@@ -153,6 +153,18 @@ class MainActivity : AppCompatActivity() {
             val numOneText = binding.tvForCalculationShow.text.toString()
             val numTwoText = binding.edForCalNumbers.text.toString()
 
+            if(numOneText.length>4)
+            {
+                Snackbar.make(binding.root,"max",Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if(numTwoText.length>4)
+            {
+                Snackbar.make(binding.root,"max",Snackbar.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             if(numOneText.isEmpty() || numTwoText.isEmpty())
             {
                 Snackbar.make(binding.root,"Please enter number first!",Snackbar.LENGTH_SHORT).show()

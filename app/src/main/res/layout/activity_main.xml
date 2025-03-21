@@ -55,7 +55,7 @@
         android:columnCount="3"
         android:layout_below="@+id/seeCalculation"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         >
 
         <Button
